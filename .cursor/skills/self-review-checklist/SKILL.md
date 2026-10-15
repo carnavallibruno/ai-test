@@ -28,10 +28,24 @@ Correct errors, run tests, and check accessibility code before ending the respon
 ### 2. TypeScript and Code Quality
 
 - Run the project's existing lint and type-check commands when available and appropriate.
+
 - Fix errors introduced by the current changes.
+
 - Avoid weakening types or disabling lint rules merely to make validation pass.
+
 - Check that component props, API contracts, and return types are consistent.
+
 - Remove unnecessary any, unsafe casts, and dead code when relevant to the change.
+
+- Validate TypeScript configuration files (tsconfig.json, tsconfig.app.json, tsconfig.node.json, and any relevant extended configurations) when applicable.
+
+- Investigate configuration errors, including unsupported compiler options, incompatible TypeScript versions, invalid extends references, and conflicting settings.
+
+- When a validation command reports errors, investigate and resolve errors introduced by the current changes before completing the task. Do not stop at reporting the errors if they can be safely fixed within the requested scope.
+
+- Do not remove compiler options, weaken type checking, or change dependency versions merely to silence an error without understanding the underlying cause.
+
+- If an error is pre-existing, outside the requested scope, or cannot be safely resolved, clearly report it and explain what remains unresolved.
 
 ### 3. Testing
 

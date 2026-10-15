@@ -46,6 +46,8 @@ Use feature-specific directories when components belong exclusively to a particu
 
 - Avoid circular dependencies between shared components and feature-specific modules.
 
+- Every component must be placed inside its own directory named after the component, with an index.tsx file as its entry point. For example: components/structure/Navbar/index.tsx or components/ui/Button/index.tsx.
+
 ### 3. Component Declaration and Exports
 
 - Use TypeScript for components in TypeScript projects.
