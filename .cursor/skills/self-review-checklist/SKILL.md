@@ -9,12 +9,87 @@ Correct errors, run tests, and check accessibility code before ending the respon
 
 ## When to Use
 
-- Use this skill when a response has finished generating the code
-- Use this skill when there are still any errors detected within the code
+- Use this skill after implementing a feature or modifying existing code.
+- Use it after fixing a bug or refactoring a component.
+- Use it when linting, type-checking, tests, or runtime checks reveal problems.
+- Use it before reporting that an implementation is complete.
 
 ## Instructions
 
-- Correct any errors (linter, TypeScript, or test related) that you find after the code has entirely finished generating
-- Run the tests and check for the results. If there any errors, correct them and run them again
-- Check if the code has implemented the correct accessibility conventions
-- Always use the ask questions tool if you need to clarify requirements with the user
+### 1. Review the Changes
+
+- Inspect the actual changes made, including the diff where available.
+- Confirm that the implementation addresses the user's requirements.
+- Check for unrelated modifications, accidental deletions, debugging statements, and unused imports.
+- Look for duplicated logic, unnecessary complexity, and inconsistent project conventions.
+- Check for common correctness issues such as missing error handling, incorrect assumptions, and unexpected null or undefined values.
+- Avoid rewriting code that is already correct simply to impose personal preferences.
+
+### 2. TypeScript and Code Quality
+
+- Run the project's existing lint and type-check commands when available and appropriate.
+- Fix errors introduced by the current changes.
+- Avoid weakening types or disabling lint rules merely to make validation pass.
+- Check that component props, API contracts, and return types are consistent.
+- Remove unnecessary any, unsafe casts, and dead code when relevant to the change.
+
+### 3. Testing
+
+- Identify the tests most relevant to the modified behavior.
+- Run targeted tests first, then expand to broader suites when warranted.
+- Add or update tests for meaningful new behavior and bug fixes.
+- Check edge cases and failure paths when they are relevant.
+- If a test fails, determine whether the failure was introduced by the change or existed beforehand.
+- Fix regressions caused by the implementation and rerun the relevant tests.
+- Do not modify a test merely to make it pass if that would conceal a genuine defect.
+- Do not claim tests passed unless they actually completed successfully.
+
+### 4. Accessibility and User Experience
+
+When the change affects the UI, check the following where applicable:
+
+- Semantic HTML and appropriate interactive elements.
+- Accessible names and labels for controls.
+- Keyboard navigation and visible focus indicators.
+- Appropriate contrast and readable text.
+- Alternative text for meaningful images.
+- Loading, empty, error, and disabled states.
+- Responsive layouts and potential visual regressions.
+
+Do not perform an exhaustive accessibility audit for a backend-only change.
+
+### 5. Performance and Security
+
+- Look for unnecessary repeated requests, expensive computations, redundant rendering, and avoidable dependencies.
+- Check for obvious resource leaks or incorrect effect cleanup where applicable.
+- Review input validation, authorization, and sensitive-data handling when relevant.
+- Avoid speculative optimizations that make the implementation harder to maintain without a measurable or credible benefit.
+
+### 6. Scope and Regression Risk
+
+- Confirm that the changes are limited to the requested scope.
+- Preserve existing behavior unless a change is explicitly required.
+- Inspect affected call sites when modifying shared components, public interfaces, or common utilities.
+- If a pre-existing issue is discovered, avoid expanding the task to fix it unless it blocks the requested implementation or presents a material risk.
+
+### 7. Completion Criteria
+
+Before finishing:
+
+- Confirm that the requested behavior is implemented.
+- Run the appropriate available checks.
+- Resolve issues introduced by the changes.
+- Recheck relevant tests after making fixes.
+- Report any checks that could not be run and any known unresolved problems.
+
+## Output Guidelines
+
+Provide a concise summary containing:
+
+- What was implemented or changed.
+
+- Which relevant checks were run and their results.
+
+- Any remaining limitations or issues.
+
+Never claim that code is error-free, accessible, or fully tested without sufficient evidence.
